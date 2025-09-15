@@ -1,9 +1,12 @@
 import { Component, signal } from '@angular/core';
+import { ExchangeRateComponent } from './components/exchange-rate.component/exchange-rate.component';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  imports: [CommonModule, ExchangeRateComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

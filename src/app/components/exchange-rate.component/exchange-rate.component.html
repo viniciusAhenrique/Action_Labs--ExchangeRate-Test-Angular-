@@ -1,1 +1,92 @@
-<p>exchange-rate.component works!</p>
+<div class="min-h-screen flex flex-col bg-white">
+  <div class="flex-grow p-5">
+    <div class="max-w-2xl mx-auto p-2">
+      <!-- Application header with image callout -->
+      <div class="flex justify-center items-center text-center mb-8">
+        <img src="assets/images/Action Labs.png" alt="Logo" class="w-40">
+      </div>
+      <div class="border-t my-5 border-gray-400"></div>
+      <div class="text-center mb-8">
+        <h2 class="text-xl font-bold text-[var(--primary-color)]">BRL EXCHANGE RATE</h2>
+      </div>
+      <!-- Input currency -->
+      <div class="mb-4">
+        <input
+          [(ngModel)]="currencyCode"
+          type="text"
+          class="w-full p-4 border rounded-md bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Enter the currency code"
+        />
+      </div>
+      <!--Current currency search button -->
+      <div class="mb-4">
+        <button
+        (click)="fetchExchangeRate()"
+        class="w-full bg-[var(--primary-color)] text-white py-3 rounded-full text-lg font-bold hover:bg-[var(--primary-color)]"
+      >
+        EXCHANGE RESULT
+      </button>
+      </div>
+      <!-- Display exchange rate or loading/error states -->
+      <div *ngIf="loading" class="text-center">
+        <div class="spinner-border text-blue-600" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+
+      <div *ngIf="error" class="text-center text-red-500">
+        <p>{{ error }}</p>
+      </div>
+      <!-- Exchange rate display and history toggle -->
+      <div *ngIf="exchangeRate" class="mt-6">
+        <div class="border-t my-5 border-gray-200"></div>
+        <div class="flex justify-between">
+          <div>
+            <p class="font-bold">Exchange rate now</p>
+            <p class="text-sm text-gray-500">{{ timestamp }}</p>
+          </div>
+          <p class="text-[var(--primary-color)] font-bold text-24">{{ currencyCode.toUpperCase() }}/BRL</p>
+        </div>
+        <div class="mt-4 p-6 bg-blue-100 text-center rounded-lg">
+          <p class="text-2xl font-bold text-[var(--primary-color)]">R$ {{ exchangeRate | number: '1.2-2' }}</p>
+        </div>
+        <!-- Exchange rate history toggle and display-->
+        <div class="mt-4 flex justify-between items-center">
+          <p class="text-black-700 font-semibold">LAST 30 DAYS</p>
+          <button type="button" title="Toggle history view" (click)="fetchHistory()" class="text-[var(--primary-color)]">
+            <svg *ngIf="!showHistory" xmlns="http://www.w3.org/2000/svg"
+                 fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                 class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 4v16m8-8H4" />
+            </svg>
+            <svg *ngIf="showHistory" xmlns="http://www.w3.org/2000/svg"
+                 fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                 class="w-6 h-6">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M20 12H4" />
+            </svg>
+          </button>
+        </div>
+        <div class="border-t my-4 border-blue-600"></div>
+        <!-- Call for the exchange-history component-->
+        <div *ngIf="showHistory" class="mt-4">
+          <div *ngIf="history.length > 0" class="history-container p-2 border-b my-2 border-[var(--primary-color)]">
+            <exchange-history
+              *ngFor="let item of history"
+              [dailyData]="item"
+            ></exchange-history>
+          </div>
+          <!--Erros message if the component does not work -->
+          <div *ngIf="historyError" class="text-red-500 mt-2">
+            <p>{{ historyError }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Application footer -->
+  <footer class="bg-[var(--primary-color)] text-center text-white py-2">
+    <p class="text-xs">Copyright 2022 - Action Labs</p>
+  </footer>
+</div>

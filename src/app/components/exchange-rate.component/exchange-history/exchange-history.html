@@ -1,1 +1,28 @@
-<p>exchange-history works!</p>
+<div class="bg-white rounded-md shadow p-4 mb-4">
+  <!-- Date Display -->
+  <p class="text-[var(--primary-color)] font-bold text-sm">{{ formattedDate }}</p>
+
+  <div class="mt-2 flex justify-between text-sm">
+    <p>OPEN:
+       <strong class="text-lg">{{ formatValue(dailyData.open) }}</strong></p>
+    <p>HIGH:
+      <strong class="text-lg">{{ formatValue(dailyData.high) }}</strong></p>
+  </div>
+
+  <div class="mt-1 flex justify-between text-sm">
+    <p>CLOSE:
+      <strong class="text-lg">{{ formatValue(dailyData.close) }}</strong></p>
+    <p>LOW:
+      <strong class="text-lg">{{ formatValue(dailyData.low) }}</strong></p>
+  </div>
+
+  <div class="mt-3 flex items-center">
+    <p class="text-sm ">CLOSE DIFF (%):</p>
+    <p [style.color]="diffColor" class="ml-2 font-bold text-lg">
+      {{ formatDiff() }}
+    </p>
+    <span class="ml-1 text-lg" [style.color]="diffColor">
+      {{ trendIcon }}
+    </span>
+  </div>
+</div>
