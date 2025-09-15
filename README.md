@@ -1,59 +1,120 @@
-# Project
+# Action_Labs--Exchange Rate Test Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.1.
+**Description:**  
+This project was developed as part of a Front-end Developer assessment for Action Labs.  
+It is a web application built with **Angular** and **Tailwind CSS** that allows users to check the exchange rate of the **BRL** (Brazilian Real) against other currencies, including a 30-day historical view.
 
-## Development server
+---
 
-To start a local development server, run:
+## Features
+
+- Enter a currency code (e.g., USD, EUR) into the input field  
+- Fetch the current exchange rate of BRL against the selected currency  
+- View the last 30 days of exchange rate history  
+- Clean, responsive interface styled with Tailwind CSS  
+- Error handling and loading indicators for better UX
+
+---
+
+## Technologies Used
+
+- **Angular** (TypeScript)  
+- **Tailwind CSS** for styling  
+- **RxJS** for reactive programming  
+- **HttpClient** for API communication  
+- **Standalone Components** for modular architecture  
+- **External API** for real-time exchange rate data
+
+---
+
+## Requirements
+
+To run this project locally, you need:
+
+1. **Node.js** and **npm**  
+   - [Download Node.js](https://nodejs.org/en/download/)  
+   - Recommended: Node 18+
+
+2. **Angular CLI**  
+   - Install globally:  
+     ```bash
+     npm install -g @angular/cli
+     ```
+
+3. **Code Editor**  
+   - Recommended: **Visual Studio Code**
+
+---
+
+## How to Run the Project
+
+1. Clone this repository:
+   ```bash
+   git clone https://github.com/your-username/Action_Labs--ExchangeRate-Test-Angular-.git
+   cd Action_Labs--ExchangeRate-Test-Angular-
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Run the development server:
+   ```bash
+   ng serve
+   ```
+
+4. Open your browser and navigate to:
+   ```
+   http://localhost:4200
+   ```
+
+---
+
+## Folder Structure
 
 ```bash
-ng serve
+src/
+│
+├─ app/
+│   ├─ components/
+│   │   └─ exchange-rate.component/
+│   │       ├─ exchange-history/
+│   │          ├─ exchange-history.html
+│   │          ├─ exchange-history.scss
+│   │          ├─ exchange-history.spec.ts
+│   │          └─ exchange-history.ts
+│   │       ├─ exchange-rate.component.html
+│   │       ├─ exchange-rate.component.scss
+│   │       ├─ exchange-rate.component.spec.ts
+│   │       └─ exchange-rate.component.ts
+│   │
+│   │
+│   │
+│   ├─ models/
+│   │   └─ exchange-rate_daily.ts
+│   │
+│   ├─ services/
+│   │   └─ exchange-rate_services.ts
+│   │
+│   ├─ app.config.ts
+│   ├─ app.html
+│   ├─ app.routes.ts
+│   ├─ app.scss
+│   └─ app.ts
+│
+├─ assets/
+│   ├─ ActionLabs.png
+│   └─ logo.png
+│
+├─ environments/
+│   ├─ environment.development.ts
+│   └─ environment.ts
+│
+├─ index.html
+└─ main.ts
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+---
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+**Author:** Vinicius Andrade Henrique
